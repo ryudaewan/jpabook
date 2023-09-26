@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
@@ -24,7 +24,7 @@
         <!-- JPA, 하이버네이트 버전 -->
         <hibernate.version>5.6.15.Final</hibernate.version>
         <!-- 데이터베이스 버전 -->
-        <h2db.version>2.2.224</h2db.version>
+        <h2db.version>2.1.210</h2db.version>
         <!-- 데이터베이스 버전 -->
         <tomcat-jdbc.version>7.0.57</tomcat-jdbc.version>
         <!-- JSP, WEB 버전 -->
@@ -128,28 +128,28 @@
 
     </dependencies>
 
-	<build>
-		<plugins>
-	      <plugin>
-	        <groupId>org.apache.maven.plugins</groupId>
-	        <artifactId>maven-compiler-plugin</artifactId>
-	        <version>3.1</version>
-	        <configuration>
-	          <source>${java.version}</source>
-	          <target>${java.version}</target>
-	        </configuration>
-	      </plugin>
-	      
-	      <plugin>
-	        <groupId>org.apache.tomcat.maven</groupId>
-	        <artifactId>tomcat7-maven-plugin</artifactId>
-	        <version>2.2</version>
-	        <configuration>
-	        	<path>/</path>
-	       	    <uriEncoding>UTF-8</uriEncoding>
-	        </configuration>
-	      </plugin>
-	                 	      
-	    </plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <path>/</path>
+                    <uriEncoding>UTF-8</uriEncoding>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 </project>
