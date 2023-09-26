@@ -3,7 +3,7 @@ package jpabook.jpashop.domain;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
 
-import javax.persistence.criteria.*;
+import jakarta.persistence.criteria.*;
 
 public class OrderSpec {
 

@@ -1,6 +1,6 @@
 package jpabook.jpashop.domain;
 
-import javax.persistence.Embeddable;
+import jakarta.persistence.Embeddable;
 
 /**
  * Created by holyeye on 2014. 3. 11..

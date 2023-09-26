@@ -1,8 +1,7 @@
 package jpabook.jpashop.domain;
 
+import jakarta.persistence.*;
 import jpabook.jpashop.domain.item.Item;
-
-import javax.persistence.*;
 
 /**
  * Created by holyeye on 2014. 3. 11..

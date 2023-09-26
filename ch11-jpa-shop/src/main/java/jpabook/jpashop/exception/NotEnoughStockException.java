@@ -5,7 +5,6 @@ package jpabook.jpashop.exception;
  *
  * @author holyeye
  */
-@SuppressWarnings("serial")
 public class NotEnoughStockException extends RuntimeException {
 
     public NotEnoughStockException() {
