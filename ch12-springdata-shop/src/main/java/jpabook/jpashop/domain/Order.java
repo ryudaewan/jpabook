@@ -12,7 +12,8 @@ import java.util.List;
 @Table(name = "ORDERS")
 public class Order {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "ORDER_ID")
     private Long id;
 
@@ -47,7 +48,10 @@ public class Order {
     }
 
     //==비즈니스 로직==//
-    /** 주문 취소 */
+
+    /**
+     * 주문 취소
+     */
     public void cancel() {
 
         if (delivery.getStatus() == DeliveryStatus.COMP) {
@@ -61,7 +65,10 @@ public class Order {
     }
 
     //==조회 로직==//
-    /** 전체 주문 가격 조회 */
+
+    /**
+     * 전체 주문 가격 조회
+     */
     public int getTotalPrice() {
         int totalPrice = 0;
         for (OrderItem orderItem : orderItems) {
@@ -70,20 +77,9 @@ public class Order {
         return totalPrice;
     }
 
-    //==연관관계 메서드==//
-    public void setMember(Member member) {
-        this.member = member;
-        member.getOrders().add(this);
-    }
-
     public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem);
         orderItem.setOrder(this);
-    }
-
-    public void setDelivery(Delivery delivery) {
-        this.delivery = delivery;
-        delivery.setOrder(this);
     }
 
     //==Getter, Setter==//
@@ -99,6 +95,12 @@ public class Order {
         return member;
     }
 
+    //==연관관계 메서드==//
+    public void setMember(Member member) {
+        this.member = member;
+        member.getOrders().add(this);
+    }
+
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
@@ -109,6 +111,11 @@ public class Order {
 
     public Delivery getDelivery() {
         return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+        delivery.setOrder(this);
     }
 
     public Date getOrderDate() {

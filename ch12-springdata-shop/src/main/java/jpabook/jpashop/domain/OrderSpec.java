@@ -14,7 +14,7 @@ public class OrderSpec {
                 if (StringUtils.isEmpty(memberName)) return null;
 
                 Join<Order, Member> m = root.join("member", JoinType.INNER); //회원과 조인
-                return builder.like(m.<String>get("name"), "%" + memberName + "%");
+                return builder.like(m.get("name"), "%" + memberName + "%");
             }
         };
     }

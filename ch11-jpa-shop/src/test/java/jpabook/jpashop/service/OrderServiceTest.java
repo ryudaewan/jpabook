@@ -33,8 +33,10 @@ public class OrderServiceTest {
     @PersistenceContext
     EntityManager em;
 
-    @Autowired OrderService orderService;
-    @Autowired OrderRepository orderRepository;
+    @Autowired
+    OrderService orderService;
+    @Autowired
+    OrderRepository orderRepository;
 
     @Test
     public void 상품주문() throws Exception {

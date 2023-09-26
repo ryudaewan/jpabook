@@ -1,6 +1,7 @@
 package jpabook.jpashop.domain;
 
 import javax.persistence.Embeddable;
+import java.util.Objects;
 
 /**
  * Created by holyeye on 2014. 3. 11..
@@ -57,15 +58,11 @@ public class Address {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Address)) return false;
+        if (!(o instanceof Address address)) return false;
 
-        Address address = (Address) o;
-
-        if (city != null ? !city.equals(address.city) : address.city != null) return false;
-        if (street != null ? !street.equals(address.street) : address.street != null) return false;
-        if (zipcode != null ? !zipcode.equals(address.zipcode) : address.zipcode != null) return false;
-
-        return true;
+        if (!Objects.equals(city, address.city)) return false;
+        if (!Objects.equals(street, address.street)) return false;
+        return Objects.equals(zipcode, address.zipcode);
     }
 
     @Override

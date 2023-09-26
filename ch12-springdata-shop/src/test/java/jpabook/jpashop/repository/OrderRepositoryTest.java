@@ -23,10 +23,14 @@ import java.util.List;
 @Transactional
 public class OrderRepositoryTest {
 
-    @Autowired MemberService memberService;
-    @Autowired ItemService itemService;
-    @Autowired OrderService orderService;
-    @Autowired OrderRepository orderRepository;
+    @Autowired
+    MemberService memberService;
+    @Autowired
+    ItemService itemService;
+    @Autowired
+    OrderService orderService;
+    @Autowired
+    OrderRepository orderRepository;
 
     @Test
     public void test() throws Exception {

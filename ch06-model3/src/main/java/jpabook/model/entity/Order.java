@@ -12,7 +12,8 @@ import java.util.List;
 @Table(name = "ORDERS")
 public class Order {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "ORDER_ID")
     private Long id;
 
@@ -32,25 +33,9 @@ public class Order {
     @Enumerated(EnumType.STRING)
     private OrderStatus status;//주문상태
 
-
-    //==연관관계 메서드==//
-    public void setMember(Member member) {
-        //기존 관계 제거
-        if (this.member != null) {
-            this.member.getOrders().remove(this);
-        }
-        this.member = member;
-        member.getOrders().add(this);
-    }
-
     public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem);
         orderItem.setOrder(this);
-    }
-
-    public void setDelivery(Delivery delivery) {
-        this.delivery = delivery;
-        delivery.setOrder(this);
     }
 
     //Getter, Setter
@@ -66,6 +51,16 @@ public class Order {
         return member;
     }
 
+    //==연관관계 메서드==//
+    public void setMember(Member member) {
+        //기존 관계 제거
+        if (this.member != null) {
+            this.member.getOrders().remove(this);
+        }
+        this.member = member;
+        member.getOrders().add(this);
+    }
+
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
@@ -76,6 +71,11 @@ public class Order {
 
     public Delivery getDelivery() {
         return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+        delivery.setOrder(this);
     }
 
     public Date getOrderDate() {

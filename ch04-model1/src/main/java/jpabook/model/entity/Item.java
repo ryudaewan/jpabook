@@ -1,6 +1,9 @@
 package jpabook.model.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * Created by holyeye on 2014. 3. 11..
@@ -9,7 +12,8 @@ import javax.persistence.*;
 @Entity
 public class Item {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "ITEM_ID")
     private Long id;
 

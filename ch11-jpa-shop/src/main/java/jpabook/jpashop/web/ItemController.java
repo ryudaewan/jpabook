@@ -20,7 +20,8 @@ import java.util.List;
 @Controller
 public class ItemController {
 
-    @Autowired ItemService itemService;
+    @Autowired
+    ItemService itemService;
 
     @RequestMapping(value = "/items/new", method = RequestMethod.GET)
     public String createForm() {

@@ -20,7 +20,8 @@ import java.util.List;
 @SessionAttributes("item")
 public class ItemController {
 
-    @Autowired ItemService itemService;
+    @Autowired
+    ItemService itemService;
 
     @InitBinder
     public void setAllowedFields(WebDataBinder dataBinder) {

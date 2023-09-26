@@ -2,8 +2,8 @@ package jpabook.jpashop.web;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.domain.OrderSearch;
+import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.service.ItemService;
 import jpabook.jpashop.service.MemberService;
 import jpabook.jpashop.service.OrderService;
@@ -21,9 +21,12 @@ import java.util.List;
 @Controller
 public class OrderController {
 
-    @Autowired OrderService orderService;
-    @Autowired MemberService memberService;
-    @Autowired ItemService itemService;
+    @Autowired
+    OrderService orderService;
+    @Autowired
+    MemberService memberService;
+    @Autowired
+    ItemService itemService;
 
     @RequestMapping(value = "/order", method = RequestMethod.GET)
     public String createForm(Model model) {

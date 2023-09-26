@@ -11,7 +11,8 @@ import javax.persistence.*;
 @Table(name = "ORDER_ITEM")
 public class OrderItem {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     @Column(name = "ORDER_ITEM_ID")
     private Long id;
 
@@ -39,13 +40,19 @@ public class OrderItem {
     }
 
     //==비즈니스 로직==//
-    /** 주문 취소 */
+
+    /**
+     * 주문 취소
+     */
     public void cancel() {
         getItem().addStock(count);
     }
 
     //==조회 로직==//
-    /** 주문상품 전체 가격 조회 */
+
+    /**
+     * 주문상품 전체 가격 조회
+     */
     public int getTotalPrice() {
         return getOrderPrice() * getCount();
     }
