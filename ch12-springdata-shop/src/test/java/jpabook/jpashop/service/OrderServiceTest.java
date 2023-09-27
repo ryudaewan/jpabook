@@ -1,5 +1,7 @@
 package jpabook.jpashop.service;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
@@ -8,23 +10,21 @@ import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.exception.NotEnoughStockException;
 import jpabook.jpashop.repository.OrderRepository;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 /**
  * Created by holyeye on 2014. 3. 12..
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = "classpath:appConfig.xml")
 @Transactional
 //@TransactionConfiguration(defaultRollback = false)
@@ -58,7 +58,8 @@ public class OrderServiceTest {
         assertEquals("주문 수량만큼 재고가 줄어야 한다.", 8, item.getStockQuantity());
     }
 
-    @Test(expected = NotEnoughStockException.class)
+    //@Test(expected = NotEnoughStockException.class)
+    @Test
     public void 상품주문_재고수량초과() throws Exception {
 
         //Given
@@ -68,7 +69,9 @@ public class OrderServiceTest {
         int orderCount = 11; //재고 보다 많은 수량
 
         //When
-        orderService.order(member.getId(), item.getId(), orderCount);
+        assertThrows(NotEnoughStockException.class, () -> {
+            orderService.order(member.getId(), item.getId(), orderCount);
+        });
 
         //Then
         fail("재고 수량 부족 예외가 발생해야 한다.");
