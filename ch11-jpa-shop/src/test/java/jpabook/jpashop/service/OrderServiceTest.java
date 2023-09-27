@@ -1,5 +1,7 @@
 package jpabook.jpashop.service;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
@@ -15,11 +17,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.fail;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
 
 //import static org.junit.Assert.assertEquals;
@@ -79,7 +78,7 @@ public class OrderServiceTest {
         });
 
         //Then
-        fail("재고 수량 부족 예외가 발생해야 한다.");
+        //fail("재고 수량 부족 예외가 발생해야 한다.");
     }
 
 

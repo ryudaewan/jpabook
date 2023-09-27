@@ -1,9 +1,8 @@
 package jpabook.jpashop.domain;
 
+import jakarta.persistence.criteria.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.StringUtils;
-
-import jakarta.persistence.criteria.*;
 
 public class OrderSpec {
 

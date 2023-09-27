@@ -8,17 +8,19 @@ import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.service.ItemService;
 import jpabook.jpashop.service.MemberService;
 import jpabook.jpashop.service.OrderService;
-import org.junit.Assert;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+@ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = "classpath:appConfig.xml")
 @Transactional
 public class OrderRepositoryTest {
@@ -48,7 +50,7 @@ public class OrderRepositoryTest {
         List<Order> search = orderRepository.search(orderSearch);
 
         //Then
-        Assert.assertEquals(1, search.size());
+        assertEquals(1, search.size());
     }
 
     private Member createMember(String name) {

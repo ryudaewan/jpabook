@@ -1,9 +1,9 @@
 package jpabook.model.entity.item;
 
 
+import jakarta.persistence.*;
 import jpabook.model.entity.Category;
 
-import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 

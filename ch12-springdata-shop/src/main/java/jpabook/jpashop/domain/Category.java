@@ -1,8 +1,8 @@
 package jpabook.jpashop.domain;
 
+import jakarta.persistence.*;
 import jpabook.jpashop.domain.item.Item;
 
-import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 

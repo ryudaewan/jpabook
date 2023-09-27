@@ -1,6 +1,7 @@
 package jpabook.model.entity;
 
 import jakarta.persistence.MappedSuperclass;
+
 import java.util.Date;
 
 /**

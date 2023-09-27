@@ -1,9 +1,9 @@
 package jpabook.jpashop.domain.item;
 
+import jakarta.persistence.*;
 import jpabook.jpashop.domain.Category;
 import jpabook.jpashop.exception.NotEnoughStockException;
 
-import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 

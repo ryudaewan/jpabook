@@ -1,6 +1,7 @@
 package jpabook.jpashop.repository.custom;
 
 //import com.mysema.query.jpa.JPQLQuery;
+
 import com.querydsl.jpa.JPQLQuery;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderSearch;
@@ -12,7 +13,6 @@ import org.springframework.util.StringUtils;
 import java.util.List;
 
 /**
- *
  * @author holyeye
  * @see <a href="https://www.baeldung.com/intro-to-querydsl">Intro to Querydsl</a>
  */

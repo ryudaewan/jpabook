@@ -1,6 +1,7 @@
 package jpabook.model.entity;
 
 import jakarta.persistence.Embeddable;
+
 import java.util.Objects;
 
 /**
