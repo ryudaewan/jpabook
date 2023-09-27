@@ -2,7 +2,7 @@ package jpabook.model.entity;
 
 import jpabook.model.entity.item.Item;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 /**
  * Created by holyeye on 2014. 3. 11..

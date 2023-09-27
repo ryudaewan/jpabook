@@ -3,7 +3,7 @@ package jpabook.jpashop.domain.item;
 import jpabook.jpashop.domain.Category;
 import jpabook.jpashop.exception.NotEnoughStockException;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 

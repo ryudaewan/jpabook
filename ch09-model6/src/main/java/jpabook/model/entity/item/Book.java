@@ -1,7 +1,7 @@
 package jpabook.model.entity.item;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
+import jakarta.persistence.DiscriminatorValue;
+import jakarta.persistence.Entity;
 
 /**
  * Created by holyeye on 2014. 3. 11..

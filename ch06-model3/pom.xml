@@ -16,7 +16,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <!-- JPA, 하이버네이트 버전 -->
-        <hibernate.version>5.6.15.Final</hibernate.version>
+        <hibernate.version>6.3.1.Final</hibernate.version>
         <!-- 데이터베이스 버전 -->
         <h2db.version>2.1.210</h2db.version>
 
@@ -27,7 +27,7 @@
         <!-- JPA, 하이버네이트 -->
         <dependency>
             <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
+            <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
         <!-- H2 데이터베이스 -->
@@ -36,6 +36,7 @@
             <artifactId>h2</artifactId>
             <version>${h2db.version}</version>
         </dependency>
+
     </dependencies>
 
     <build>
@@ -47,6 +48,14 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>jpabook.model.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
