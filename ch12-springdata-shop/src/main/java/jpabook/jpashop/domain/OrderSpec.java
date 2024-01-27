@@ -10,10 +10,10 @@ public class OrderSpec {
         return new Specification<Order>() {
             public Predicate toPredicate(Root<Order> root, CriteriaQuery<?> query, CriteriaBuilder builder) {
 
-                if (StringUtils.isEmpty(memberName)) return null;
+                if (false == StringUtils.hasLength(memberName)) return null;
 
                 Join<Order, Member> m = root.join("member", JoinType.INNER); //회원과 조인
-                return builder.like(m.get("name"), "%" + memberName + "%");
+                return builder.like(m.<String>get("name"), "%" + memberName + "%");
             }
         };
     }

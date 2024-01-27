@@ -1,38 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
-    <groupId>jpabook</groupId>
+
+    <parent>
+        <groupId>jpabook</groupId>
+        <artifactId>jpabook</artifactId>
+        <version>0.0.1.BUILD-SNAPSHOT</version>
+    </parent>
+
     <artifactId>ch11-jpa-shop</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>jpa-shop</name>
-    <description>Demo project for Spring Boot</description>
+    <name>ch11-jpa-shop</name>
     <packaging>war</packaging>
-    <properties>
-        <java.version>17</java.version>
-        <!-- 프로젝트 코드 인코딩 설정 -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <!-- 스프링 프레임워크 버전 -->
-        <spring-framework.version>6.0.12</spring-framework.version>
-        <!-- JPA, 하이버네이트 버전 -->
-        <hibernate.version>6.2.9.Final</hibernate.version>
 
-        <!-- 데이터베이스 버전 -->
-        <tomcat-jdbc.version>10.1.13</tomcat-jdbc.version>
-        <h2db.version>2.1.214</h2db.version>
-        <!-- JSP, WEB 버전 -->
-        <jsp.version>3.1.1</jsp.version>
-        <jstl.version>3.0.1</jstl.version>
-        <servlet.version>6.0.0</servlet.version>
-        <!-- 로그 버전 -->
-        <logback.version>1.4.11</logback.version>
-        <slf4j.version>2.0.9</slf4j.version>
-        <!-- 테스트 버전 -->
-        <junit.version>5.9.3</junit.version>
-    </properties>
     <dependencies>
+        <dependency>
+            <groupId>jakarta.annotation</groupId>
+            <artifactId>jakarta.annotation-api</artifactId>
+            <version>${jakarta.annotation.version}</version>
+        </dependency>
 
         <!-- 스프링 MVC -->
         <dependency>
@@ -48,53 +38,29 @@
             <version>${spring-framework.version}</version>
         </dependency>
 
-        <!-- JPA, 하이버네이트 -->
-        <dependency>
-            <groupId>org.hibernate.orm</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-
-        <!-- H2 데이터베이스 -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2db.version}</version>
-            <scope>runtime</scope>
-        </dependency>
-
         <!-- 커넥션 풀 -->
         <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jdbc</artifactId>
-            <version>${tomcat-jdbc.version}</version>
-            <scope>provided</scope>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikaricp.version}</version>
         </dependency>
 
-        <!-- JSTL 3.0 -->
+        <!-- WEB -->
         <dependency>
             <groupId>jakarta.servlet.jsp.jstl</groupId>
             <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-            <version>3.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.glassfish.web</groupId>
-            <artifactId>jakarta.servlet.jsp.jstl</artifactId>
             <version>${jstl.version}</version>
-            <!--<scope>runtime</scope>-->
         </dependency>
-
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
             <version>${servlet.version}</version>
             <scope>provided</scope>
         </dependency>
-
         <dependency>
-            <groupId>jakarta.servlet.jsp</groupId>
-            <artifactId>jakarta.servlet.jsp-api</artifactId>
-            <version>${jsp.version}</version>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>javax.servlet.jsp-api</artifactId>
+            <version>2.3.1</version>
             <scope>provided</scope>
         </dependency>
 
@@ -120,32 +86,34 @@
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
+            <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>jakarta.annotation</groupId>
-            <artifactId>jakarta.annotation-api</artifactId>
-            <version>2.1.1</version>
-            <scope>compile</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
-        <finalName>jpa-shop</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.10.1</version>
+                <version>3.1</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                 </configuration>
+            </plugin>
+
+            <!--
+           Jetty Plugin에 대한 상세한 사항은
+          https://eclipse.dev/jetty/documentation/jetty-10/programming-guide/index.html#maven-and-jetty
+          참고 요망
+      -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>${jetty.plugin.version}</version>
             </plugin>
         </plugins>
     </build>
-
 </project>

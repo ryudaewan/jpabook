@@ -1,5 +1,7 @@
 package jpabook.jpashop.domain;
 
+//import org.springframework.data.jpa.domain.Specifications;
+
 import org.springframework.data.jpa.domain.Specification;
 
 import static jpabook.jpashop.domain.OrderSpec.memberNameLike;

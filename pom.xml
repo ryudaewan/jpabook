@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>jpabook</groupId>
+    <artifactId>jpabook</artifactId>
+    <version>0.0.1.BUILD-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>jpabook</name>
+    <url>https://github.com/ryudaewan/jpa-book</url>
+    <modules>
+        <module>ch02-jpa-start1</module>
+        <module>ch04-jpa-start2</module>
+        <module>ch04-model1</module>
+        <module>ch05-model2</module>
+        <module>ch06-model3</module>
+        <module>ch07-model4</module>
+        <module>ch08-model5</module>
+        <module>ch09-model6</module>
+        <module>ch11-jpa-shop</module>
+        <module>ch12-springdata-shop</module>
+    </modules>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+
+        <!-- library version -->
+        <pgsql.driver.version>42.6.0</pgsql.driver.version>
+        <h2db.version>2.2.220</h2db.version>
+        <hibernate.version>6.4.2.Final</hibernate.version>
+        <spring-framework.version>6.0.13</spring-framework.version>
+        <spring-data-jpa.version>3.1.5</spring-data-jpa.version>
+        <jpa-api.verion>3.1.0</jpa-api.verion>
+        <servlet.version>6.0.0</servlet.version>
+        <jstl.version>3.0.0</jstl.version>
+        <jsp.verion>3.1.1</jsp.verion>
+        <junit.version>5.9.3</junit.version>
+        <hikaricp.version>5.0.1</hikaricp.version>
+        <!--<log4j2.version>2.20.0</log4j2.version>-->
+        <slf4j.version>2.0.7</slf4j.version>
+        <logback.version>1.4.14</logback.version>
+        <querydsl.version>5.0.0</querydsl.version>
+        <jakarta.annotation.version>2.1.1</jakarta.annotation.version>
+
+        <!-- maven plugin version -->
+        <compiler.plugin.version>3.11.0</compiler.plugin.version>
+        <resources.plugin.version>3.3.1</resources.plugin.version>
+        <project-info-report.plugin.version>3.4.5</project-info-report.plugin.version>
+        <war.plugin.version>3.3.2</war.plugin.version>
+        <jetty.plugin.version>11.0.16</jetty.plugin.version>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- H2 데이터베이스 -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>${h2db.version}</version>
+        </dependency>
+        <!-- JPA, 하이버네이트 -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${compiler.plugin.version}</version>
+                <configuration>
+                    <compilerArgs>
+                        <arg>-Xlint:all,-options,-path</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${resources.plugin.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>${project-info-report.plugin.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -13,7 +13,6 @@ import java.util.List;
 /**
  * Created by holyeye on 2014. 3. 12..
  */
-
 @Service
 @Transactional
 public class OrderService {
@@ -31,7 +30,9 @@ public class OrderService {
     public Long order(Long memberId, Long itemId, int count) {
 
         //엔티티 조회
-        Member member = memberRepository.findOne(memberId);
+        Member member = memberRepository.findById(memberId).orElseGet(() -> {
+            return null;
+        });
         Item item = itemService.findOne(itemId);
 
         //배송정보 생성
@@ -53,10 +54,11 @@ public class OrderService {
     public void cancelOrder(Long orderId) {
 
         //주문 엔티티 조회
-        Order order = orderRepository.findOne(orderId);
+        Order order = orderRepository.findById(orderId).orElse(null);
 
-        //주문 취소
-        order.cancel();
+        if (null != order) {
+            order.cancel();
+        }
     }
 
     /**

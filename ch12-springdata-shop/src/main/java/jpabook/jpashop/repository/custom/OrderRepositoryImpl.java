@@ -1,7 +1,5 @@
 package jpabook.jpashop.repository.custom;
 
-//import com.mysema.query.jpa.JPQLQuery;
-
 import com.querydsl.jpa.JPQLQuery;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderSearch;
@@ -14,7 +12,6 @@ import java.util.List;
 
 /**
  * @author holyeye
- * @see <a href="https://www.baeldung.com/intro-to-querydsl">Intro to Querydsl</a>
  */
 public class OrderRepositoryImpl extends QuerydslRepositorySupport implements CustomOrderRepository {
 
@@ -28,7 +25,7 @@ public class OrderRepositoryImpl extends QuerydslRepositorySupport implements Cu
         QOrder order = QOrder.order;
         QMember member = QMember.member;
 
-        JPQLQuery query = from(order);
+        JPQLQuery<Order> query = from(order);
 
         if (StringUtils.hasText(orderSearch.getMemberName())) {
             query.leftJoin(order.member, member)

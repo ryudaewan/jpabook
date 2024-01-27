@@ -10,6 +10,6 @@ import java.util.List;
  */
 public interface CustomOrderRepository {
 
-    List<Order> search(OrderSearch orderSearch);
+    public List<Order> search(OrderSearch orderSearch);
 
 }

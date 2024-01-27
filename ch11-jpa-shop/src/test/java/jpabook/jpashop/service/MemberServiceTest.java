@@ -11,9 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-//import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.fail;
-
 //@RunWith(SpringJUnit4ClassRunner.class)
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = "classpath:appConfig.xml")
@@ -39,7 +36,6 @@ public class MemberServiceTest {
         assertEquals(member, memberRepository.findOne(saveId));
     }
 
-    //@Test(expected = IllegalStateException.class)
     @Test
     public void 중복_회원_예외() throws Exception {
 
@@ -55,7 +51,6 @@ public class MemberServiceTest {
         assertThrows(IllegalStateException.class, () -> {
             memberService.join(member2); //예외가 발생해야 한다.
         });
-
         //Then
         //fail("예외가 발생해야 한다.");
     }

@@ -18,11 +18,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
+import static org.springframework.test.util.AssertionErrors.fail;
 
-//import static org.junit.Assert.assertEquals;
-//import static org.junit.Assert.fail;
 
 /**
  * Created by holyeye on 2014. 3. 12..
@@ -62,7 +60,6 @@ public class OrderServiceTest {
         assertEquals("주문 수량만큼 재고가 줄어야 한다.", 8, item.getStockQuantity());
     }
 
-    //@Test(expected = NotEnoughStockException.class)
     @Test
     public void 상품주문_재고수량초과() throws Exception {
 

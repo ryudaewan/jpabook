@@ -18,8 +18,8 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.springframework.test.util.AssertionErrors.assertEquals;
+
 
 /**
  * Created by holyeye on 2014. 3. 12..
@@ -50,7 +50,7 @@ public class OrderServiceTest {
         Long orderId = orderService.order(member.getId(), item.getId(), orderCount);
 
         //Then
-        Order getOrder = null; //TODO orderRepository.findOne(orderId);
+        Order getOrder = orderRepository.findById(orderId).orElse(null);
 
         assertEquals("상품 주문시 상태는 주문(ORDER)이다.", OrderStatus.ORDER, getOrder.getStatus());
         assertEquals("주문한 상품 종류 수가 정확해야 한다.", 1, getOrder.getOrderItems().size());
@@ -58,7 +58,6 @@ public class OrderServiceTest {
         assertEquals("주문 수량만큼 재고가 줄어야 한다.", 8, item.getStockQuantity());
     }
 
-    //@Test(expected = NotEnoughStockException.class)
     @Test
     public void 상품주문_재고수량초과() throws Exception {
 
@@ -74,7 +73,7 @@ public class OrderServiceTest {
         });
 
         //Then
-        fail("재고 수량 부족 예외가 발생해야 한다.");
+        //fail("재고 수량 부족 예외가 발생해야 한다.");
     }
 
 
@@ -92,7 +91,7 @@ public class OrderServiceTest {
         orderService.cancelOrder(orderId);
 
         //Then
-        Order getOrder = null; //TODO orderRepository.findOne(orderId);
+        Order getOrder = orderRepository.findById(orderId).orElse(null);
 
         assertEquals("주문 취소시 상태는 CANCEL 이다.", OrderStatus.CANCEL, getOrder.getStatus());
         assertEquals("주문이 취소된 상품은 그만큼 재고가 증가해야 한다.", 10, item.getStockQuantity());
